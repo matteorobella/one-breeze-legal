@@ -3,105 +3,372 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Breeze — Borsa, Crypto e AI in due minuti</title>
+<meta name="description" content="Ogni mattina l'essenziale di Borsa, Crypto e Intelligenza Artificiale in due minuti. Una notifica al giorno, niente feed infiniti. Gratis su iPhone.">
 <meta name="robots" content="index,follow">
-<title>One Breeze — One Breeze</title>
+<meta property="og:title" content="One Breeze — le notizie del giorno, in un soffio">
+<meta property="og:description" content="Borsa, Crypto e AI riassunte in due minuti. Una notifica al giorno, niente rumore.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://matteorobella.github.io/one-breeze-legal/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://matteorobella.github.io/one-breeze-legal/img/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"One Breeze",
+"applicationCategory":"NewsApplication","operatingSystem":"iOS",
+"description":"Ogni mattina l'essenziale di Borsa, Crypto e Intelligenza Artificiale in due minuti. Una notifica al giorno, niente feed infiniti.",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"url":"https://apps.apple.com/it/app/id6789908621","author":{"@type":"Person","name":"Matteo Robella"}}
+</script>
+<script>document.documentElement.className+=" js"</script>
+<link rel="icon" href="img/icon.png">
 <style>
-:root { color-scheme: light dark; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #FAFAF9; color: #18181B;
-  line-height: 1.65; padding: 2.5rem 1.25rem 4rem;
-}
-main { max-width: 42rem; margin: 0 auto; }
-.mark { font-family: Baskerville, 'Times New Roman', serif; font-weight: 600; color: #18181B; text-decoration: none; font-size: 1.35rem; }
-.muted { color: #52525B; font-size: 0.85rem; }
-h1 { font-family: Baskerville, Georgia, serif; font-weight: 600; font-size: 2rem; line-height: 1.2; margin: 1.75rem 0 0.35rem; }
-h2 { font-size: 1.02rem; font-weight: 700; margin: 2rem 0 0.5rem; color: #18181B; }
-p { margin: 0.7rem 0; font-size: 0.98rem; }
-a { color: #18181B; }
-.langs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-.langs a {
-  font-size: 0.8rem; font-weight: 600; text-decoration: none;
-  border: 1px solid #E4E4E7; border-radius: 999px; padding: 0.25rem 0.8rem; color: #52525B;
-}
-.langs a.active { border-color: #18181B; color: #18181B; }
-section[hidden] { display: none; }
-footer { margin-top: 3.5rem; font-size: 0.85rem; }
-ul.docs { list-style: none; margin-top: 1.25rem; }
-ul.docs li { margin: 0.6rem 0; }
-ul.docs a { font-size: 1.05rem; }
-/* Il blocco dark DEVE stare in fondo: a parità di specificità vince l'ultima regola. */
-@media (prefers-color-scheme: dark) {
-  body { background: #0E0E10; color: #ECECEE; }
-  .muted { color: #9A9AA2; }
-  .mark { color: #ECECEE; }
-  a { color: #ECECEE; }
-  .langs a { border-color: #26262A; color: #9A9AA2; }
-  .langs a.active { border-color: #ECECEE; color: #ECECEE; }
-  h2 { color: #ECECEE; }
-}
+  :root {
+    --bg: #0E0E10; --surface: #1A1A1D; --divider: #26262A;
+    --text: #ECECEE; --read: #C9C9CF; --muted: #84848D;
+    --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+  header { padding: 1.5rem 0; }
+  .bar { display: flex; align-items: center; gap: .7rem; }
+  .logo { width: 34px; height: 34px; border-radius: 9px; }
+  .word { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; }
+  .langs { margin-left: auto; display: flex; gap: .4rem; }
+  .langs button {
+    background: none; border: 1px solid var(--divider); color: var(--muted);
+    font: inherit; font-size: .78rem; font-weight: 600; padding: .25rem .7rem;
+    border-radius: 999px; cursor: pointer; transition: .15s;
+  }
+  .langs button.on { border-color: var(--text); color: var(--text); }
+  .langs button:hover { color: var(--text); }
+
+  .hero { padding: 3.5rem 0 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.02em; font-weight: 600; }
+  .lead { color: var(--read); font-size: 1.12rem; margin-top: 1.1rem; max-width: 28rem; }
+  .cta { display: flex; gap: .8rem; margin-top: 2rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+    background: var(--text); color: var(--bg); font-weight: 700; font-size: .95rem;
+    padding: .85rem 1.4rem; border-radius: 13px; transition: .15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--muted); border: 1px solid var(--divider); font-weight: 600; }
+  .shot { justify-self: center; }
+  .shot img { width: 100%; max-width: 290px; border-radius: 26px; border: 1px solid var(--divider); display: block; }
+
+  section { padding: 4.5rem 0; border-top: 1px solid var(--divider); }
+  h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3.4vw, 2.2rem); font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
+  .sub { color: var(--muted); margin-top: .6rem; max-width: 34rem; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--divider); border-radius: 18px; padding: 1.6rem; }
+  .card .k { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; margin-bottom: .7rem; }
+  .card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin-bottom: .5rem; }
+  .card p { color: var(--read); font-size: .93rem; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
+  .split img { width: 100%; max-width: 270px; border-radius: 24px; border: 1px solid var(--divider); display: block; margin: 0 auto; }
+  .points { list-style: none; margin-top: 1.8rem; }
+  .points li { padding: .9rem 0; border-bottom: 1px solid var(--divider); color: var(--read); font-size: 1rem; }
+  .points li:last-child { border: 0; }
+  .points b { color: var(--text); font-weight: 650; }
+
+  .quiet { text-align: center; padding: 5rem 0; }
+  .quiet h2 { max-width: 26rem; margin: 0 auto; }
+  .quiet .lead { margin: 1.1rem auto 0; }
+  .quiet .cta { justify-content: center; }
+  .quiet .sub { margin: 1.5rem auto 0; text-align: center; }
+
+  footer { border-top: 1px solid var(--divider); padding: 2.5rem 0 3.5rem; color: var(--muted); font-size: .87rem; }
+  .flinks { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+  .disc { font-size: .8rem; opacity: .75; max-width: 40rem; }
+
+  .free { color: var(--muted); font-size: .87rem; margin-top: 1.1rem; }
+  .free b { color: var(--read); font-weight: 600; }
+
+  .anat { margin-top: 2.5rem; border: 1px solid var(--divider); border-radius: 20px; overflow: hidden; }
+  .anat .row { display: grid; grid-template-columns: 13rem 1fr; gap: 1.5rem; padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--divider); }
+  .anat .row:last-child { border-bottom: 0; }
+  .anat .lab { font-size: .74rem; letter-spacing: .11em; text-transform: uppercase; font-weight: 700; color: var(--muted); padding-top: .15rem; }
+  .anat .txt2 { color: var(--read); font-size: .96rem; }
+
+  .js .rise { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .js .rise.seen { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .rise { opacity: 1; transform: none; transition: none; } }
+
+  [data-l]:not(.on) { display: none; }
+
+  @media (max-width: 800px) {
+    .anat .row { grid-template-columns: 1fr; gap: .4rem; padding: 1.2rem 1.3rem; }
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2rem; text-align: center; }
+    .lead { margin-left: auto; margin-right: auto; }
+    .cta { justify-content: center; }
+    .grid3 { grid-template-columns: 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .split .txt { order: 2; }
+    section { padding: 3.5rem 0; }
+  }
 </style>
 </head>
 <body>
-<main>
-<span class="mark">1&thinsp;Breeze</span>
-<nav class="langs"><a href="?lang=it" id="lang-it">Italiano</a><a href="?lang=en" id="lang-en">English</a><a href="?lang=es" id="lang-es">Español</a><a href="?lang=fr" id="lang-fr">Français</a><a href="?lang=de" id="lang-de">Deutsch</a></nav>
-<section id="doc-it">
-<h1>Documenti</h1>
-<p class="muted">Le notizie del giorno, in un soffio.</p>
-<ul class="docs"><li><a href="privacy/?lang=it">Privacy Policy</a></li><li><a href="terms/?lang=it">Termini di servizio</a></li><li><a href="sources/?lang=it">Fonti e trasparenza</a></li></ul>
-</section>
-<section id="doc-en" hidden>
-<h1>Documents</h1>
-<p class="muted">The day's news, in a breeze.</p>
-<ul class="docs"><li><a href="privacy/?lang=en">Privacy Policy</a></li><li><a href="terms/?lang=en">Terms of Service</a></li><li><a href="sources/?lang=en">Sources and transparency</a></li></ul>
-</section>
-<section id="doc-es" hidden>
-<h1>Documentos</h1>
-<p class="muted">Las noticias del día, en un soplo.</p>
-<ul class="docs"><li><a href="privacy/?lang=es">Política de Privacidad</a></li><li><a href="terms/?lang=es">Términos de servicio</a></li><li><a href="sources/?lang=es">Fuentes y transparencia</a></li></ul>
-</section>
-<section id="doc-fr" hidden>
-<h1>Documents</h1>
-<p class="muted">Les nouvelles du jour, en un souffle.</p>
-<ul class="docs"><li><a href="privacy/?lang=fr">Politique de confidentialité</a></li><li><a href="terms/?lang=fr">Conditions de service</a></li><li><a href="sources/?lang=fr">Sources et transparence</a></li></ul>
-</section>
-<section id="doc-de" hidden>
-<h1>Dokumente</h1>
-<p class="muted">Die Nachrichten des Tages, wie ein Windhauch.</p>
-<ul class="docs"><li><a href="privacy/?lang=de">Datenschutzrichtlinie</a></li><li><a href="terms/?lang=de">Nutzungsbedingungen</a></li><li><a href="sources/?lang=de">Quellen und Transparenz</a></li></ul>
-</section>
-<footer class="muted">One Breeze — matteorobella@gmail.com</footer>
+
+<header class="wrap">
+  <div class="bar">
+    <img class="logo" src="img/icon.png" alt="One Breeze">
+    <span class="word">One Breeze</span>
+    <div class="langs">
+      <button class="on" data-set="it">IT</button>
+      <button data-set="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ ITALIANO ══════════ -->
+<div data-l="it" class="on">
+
+<main class="wrap hero">
+  <div>
+    <h1>Le notizie del giorno,<br>in un soffio.</h1>
+    <p class="lead">Ogni mattina l'essenziale di Borsa, Crypto e Intelligenza Artificiale.
+      Lo leggi in due minuti e sei in pari.</p>
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com/it/app/id6789908621">Scarica su App Store</a>
+      <a class="btn ghost" href="#come">Come funziona</a>
+    </div>
+    <p class="free"><b>Gratis.</b> Senza account, senza pubblicità, una notifica al giorno.</p>
+  </div>
+  <div class="shot"><img src="img/it-1.png" alt="La schermata Oggi di One Breeze"></div>
 </main>
+
+<section class="wrap rise" id="come">
+  <h2>Tre mondi, due minuti.</h2>
+  <p class="sub">Nessun feed da scorrere. Ogni mattina trovi tre riassunti già scritti —
+    e quando li hai letti, hai finito.</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="k" style="color:#60A5FA">Borsa</div>
+      <h3>Cosa muove i mercati</h3>
+      <p>Le notizie con conseguenze reali su aziende e settori, non il commento del giorno.</p>
+    </div>
+    <div class="card">
+      <div class="k" style="color:#2DD4BF">Crypto</div>
+      <h3>Oltre il prezzo</h3>
+      <p>Regole, infrastrutture e capitali che si muovono davvero, senza entusiasmi da social.</p>
+    </div>
+    <div class="card">
+      <div class="k" style="color:#A78BFA">AI</div>
+      <h3>Chi decide il futuro</h3>
+      <p>Modelli, aziende e scelte politiche che cambieranno il lavoro di tutti.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap rise">
+  <h2>Cosa trovi dentro un digest.</h2>
+  <p class="sub">Non un elenco di titoli da scegliere: una sintesi già scritta, sempre nello
+    stesso ordine — così sai dove guardare senza cercare.</p>
+  <div class="anat">
+    <div class="row"><div class="lab">Situazione generale</div>
+      <div class="txt2">Il clima della giornata in un paragrafo: cosa sta muovendo tutto il resto.</div></div>
+    <div class="row"><div class="lab">Le storie del giorno</div>
+      <div class="txt2">Le notizie che contano davvero, riassunte per intero. Ognuna porta il nome della testata e il link all'articolo originale.</div></div>
+    <div class="row"><div class="lab">Soggetti coinvolti</div>
+      <div class="txt2">Le aziende toccate dalla notizia, con l'impatto indicato — positivo, negativo o incerto — e il perché in una riga.</div></div>
+    <div class="row"><div class="lab">In breve</div>
+      <div class="txt2">Il resto che vale la pena sapere, in due frasi ciascuna.</div></div>
+  </div>
+</section>
+
+<section class="wrap rise">
+  <div class="split">
+    <div class="txt">
+      <h2>Una notifica.<br>Al mattino. Basta.</h2>
+      <ul class="points">
+        <li><b>Una sola notifica al giorno</b>, verso le sei, con la notizia che conta di più.</li>
+        <li><b>Ogni notizia porta la sua fonte</b> e il link all'articolo originale.</li>
+        <li><b>Una parola che non conosci?</b> Aria te la spiega in due righe, senza uscire dall'app.</li>
+        <li><b>Niente pubblicità</b> e niente feed infinito. Mai.</li>
+      </ul>
+    </div>
+    <img src="img/it-2.png" alt="Un digest di One Breeze">
+  </div>
+</section>
+
+<section class="wrap rise">
+  <div class="split">
+    <img src="img/it-4.png" alt="Aria, l'assistente di One Breeze">
+    <div class="txt">
+      <h2>Non serve essere del mestiere.</h2>
+      <p class="sub" style="margin-top:1rem">I riassunti sono scritti per chi non passa la
+        giornata sui grafici. E per le parole inevitabili — spread, halving, treasury — c'è
+        Aria: gliele chiedi e te le spiega in due righe.</p>
+      <p class="sub" style="margin-top:1rem">Circa mille termini di borsa, criptovalute e
+        tecnologia, spiegati come li spiegheresti a un amico.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap quiet">
+  <h2>L'app di notizie che riesci davvero a finire.</h2>
+  <p class="lead">Gratis, senza account e senza pubblicità.</p>
+  <div class="cta">
+    <a class="btn" href="https://apps.apple.com/it/app/id6789908621">Scarica su App Store</a>
+  </div>
+  <p class="sub">La versione Android sta arrivando.</p>
+</section>
+
+<footer class="wrap">
+  <div class="flinks">
+    <a href="privacy/">Privacy</a>
+    <a href="terms/">Termini</a>
+    <a href="sources/">Fonti</a>
+    <a href="mailto:matteorobella@gmail.com">Contatti</a>
+  </div>
+  <p class="disc">One Breeze ha finalità informative e non costituisce consulenza finanziaria.
+    Le sintesi sono elaborate a partire da fonti giornalistiche, sempre citate e collegate
+    all'articolo originale.</p>
+</footer>
+
+</div>
+
+<!-- ══════════ ENGLISH ══════════ -->
+<div data-l="en">
+
+<main class="wrap hero">
+  <div>
+    <h1>The day's news,<br>in one breeze.</h1>
+    <p class="lead">Every morning, the essentials of stocks, crypto and artificial
+      intelligence. Read it in two minutes and you're caught up.</p>
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com/app/id6789908621">Download on the App Store</a>
+      <a class="btn ghost" href="#how">How it works</a>
+    </div>
+    <p class="free"><b>Free.</b> No account, no ads, one notification a day.</p>
+  </div>
+  <div class="shot"><img src="img/en-1.png" alt="One Breeze Today screen"></div>
+</main>
+
+<section class="wrap rise" id="how">
+  <h2>Three worlds, two minutes.</h2>
+  <p class="sub">No feed to scroll. Every morning you get three briefs, already written —
+    and once you've read them, you're done.</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="k" style="color:#60A5FA">Stocks</div>
+      <h3>What moves markets</h3>
+      <p>News with real consequences for companies and sectors — not the commentary of the day.</p>
+    </div>
+    <div class="card">
+      <div class="k" style="color:#2DD4BF">Crypto</div>
+      <h3>Beyond the price</h3>
+      <p>Rules, infrastructure and capital actually moving, without the social-media hype.</p>
+    </div>
+    <div class="card">
+      <div class="k" style="color:#A78BFA">AI</div>
+      <h3>Who's shaping what's next</h3>
+      <p>Models, companies and policy decisions that will change how everyone works.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap rise">
+  <h2>What's inside a brief.</h2>
+  <p class="sub">Not a list of headlines to pick from: a summary already written, always in the
+    same order — so you know where to look without searching.</p>
+  <div class="anat">
+    <div class="row"><div class="lab">The big picture</div>
+      <div class="txt2">The mood of the day in one paragraph: what's driving everything else.</div></div>
+    <div class="row"><div class="lab">Stories of the day</div>
+      <div class="txt2">The news that actually matters, summarised in full. Each one carries the publication's name and a link to the original article.</div></div>
+    <div class="row"><div class="lab">Who's affected</div>
+      <div class="txt2">The companies the news touches, with the impact marked — positive, negative or uncertain — and the reason in one line.</div></div>
+    <div class="row"><div class="lab">In short</div>
+      <div class="txt2">Everything else worth knowing, two sentences each.</div></div>
+  </div>
+</section>
+
+<section class="wrap rise">
+  <div class="split">
+    <div class="txt">
+      <h2>One notification.<br>In the morning. That's it.</h2>
+      <ul class="points">
+        <li><b>A single notification a day</b>, around six, with the story that matters most.</li>
+        <li><b>Every story carries its source</b> and a link to the original article.</li>
+        <li><b>Don't know a term?</b> Aria explains it in two lines, without leaving the app.</li>
+        <li><b>No ads</b> and no endless feed. Ever.</li>
+      </ul>
+    </div>
+    <img src="img/en-2.png" alt="A One Breeze brief">
+  </div>
+</section>
+
+<section class="wrap rise">
+  <div class="split">
+    <img src="img/en-4.png" alt="Aria, the One Breeze assistant">
+    <div class="txt">
+      <h2>You don't need to be an insider.</h2>
+      <p class="sub" style="margin-top:1rem">The briefs are written for people who don't spend
+        their day watching charts. And for the unavoidable jargon — spread, halving, treasury —
+        there's Aria: ask, and you get two lines back.</p>
+      <p class="sub" style="margin-top:1rem">Around a thousand terms from markets, crypto and
+        tech, explained the way you'd explain them to a friend.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap quiet">
+  <h2>The news app you can actually finish.</h2>
+  <p class="lead">Free, no account, no ads.</p>
+  <div class="cta">
+    <a class="btn" href="https://apps.apple.com/app/id6789908621">Download on the App Store</a>
+  </div>
+  <p class="sub">Android version coming soon.</p>
+</section>
+
+<footer class="wrap">
+  <div class="flinks">
+    <a href="privacy/">Privacy</a>
+    <a href="terms/">Terms</a>
+    <a href="sources/">Sources</a>
+    <a href="mailto:matteorobella@gmail.com">Contact</a>
+  </div>
+  <p class="disc">One Breeze is for information purposes only and does not constitute financial
+    advice. Summaries are written from journalistic sources, always cited and linked to the
+    original article.</p>
+</footer>
+
+</div>
+
 <script>
-(function () {
-  var langs = ['it', 'en', 'es', 'fr', 'de'];
-  function pick() {
-    var q = new URLSearchParams(location.search).get('lang');
-    if (langs.indexOf(q) >= 0) return q;
-    var nav = (navigator.language || 'it').slice(0, 2).toLowerCase();
-    return langs.indexOf(nav) >= 0 ? nav : 'it';
-  }
-  function show(lang) {
-    langs.forEach(function (l) {
-      var sec = document.getElementById('doc-' + l);
-      if (sec) sec.hidden = l !== lang;
-      var btn = document.getElementById('lang-' + l);
-      if (btn) btn.classList.toggle('active', l === lang);
-    });
-    document.documentElement.lang = lang;
-  }
-  show(pick());
-  langs.forEach(function (l) {
-    var btn = document.getElementById('lang-' + l);
-    if (btn) btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      history.replaceState(null, '', '?lang=' + l);
-      show(l);
-    });
-  });
-})();
+  // Lingua: segue il browser al primo caricamento, poi la scelta dell'utente.
+  const pick = l => {
+    document.querySelectorAll('[data-l]').forEach(d => d.classList.toggle('on', d.dataset.l === l));
+    document.querySelectorAll('.langs button').forEach(b => b.classList.toggle('on', b.dataset.set === l));
+    document.documentElement.lang = l;
+  };
+  document.querySelectorAll('.langs button').forEach(b => b.onclick = () => pick(b.dataset.set));
+
+  // Le sezioni si assestano entrando in vista: morbide, una volta sola, mai in loop.
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.rise').forEach(el => io.observe(el));
+  // Rete di sicurezza: se l'observer non scattasse, il contenuto compare comunque.
+  setTimeout(() => document.querySelectorAll('.rise:not(.seen)').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight) el.classList.add('seen');
+  }), 1500);
+  if (!(navigator.language || 'it').toLowerCase().startsWith('it')) pick('en');
 </script>
+
 </body>
 </html>
