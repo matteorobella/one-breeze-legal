@@ -100,6 +100,37 @@
   .free { color: var(--muted); font-size: .87rem; margin-top: 1.1rem; }
   .free b { color: var(--read); font-weight: 600; }
 
+  [hidden] { display: none !important; }
+
+  /* La promessa piu' forte, nella prima schermata: era in fondo alla riga grigia
+     insieme ad altre due cose, e nessun concorrente la fa. */
+  .promise { font-family: var(--serif); color: var(--text); font-size: 1.06rem;
+             margin-top: 1.6rem; display: flex; align-items: baseline; gap: .6rem;
+             flex-wrap: wrap; }
+  .promise::before { content: ""; width: 6px; height: 6px; border-radius: 50%;
+                     background: var(--text); flex: none; transform: translateY(-2px); }
+  .promise span { color: var(--muted); font-family: var(--sans); font-size: .9rem; }
+
+  /* Il problema contro cui l'app esiste, prima della soluzione. */
+  .why { max-width: 34rem; }
+  .why .big { font-family: var(--serif); font-size: clamp(1.5rem, 3.2vw, 2rem);
+              line-height: 1.25; font-weight: 600; letter-spacing: -.015em; }
+  .why p { color: var(--read); margin-top: 1.15rem; font-size: 1.02rem; }
+  .why cite { display: block; margin-top: 1.5rem; color: var(--muted);
+              font-size: .82rem; font-style: normal; }
+
+  /* Punto di download intermedio: la pagina e' lunga e i pulsanti erano solo
+     in cima e in fondo. Chi si convince a meta' non deve scorrere fino in fondo. */
+  .midcta { margin-top: 3.2rem; }
+
+  /* Riprova sociale: struttura pronta, sezione NASCOSTA finche' non ci sono i testi veri. */
+  .revs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3.2rem; }
+  .rev { background: var(--surface); border: 1px solid var(--divider); border-radius: 18px; padding: 1.7rem; }
+  .rev .stars { color: var(--text); font-size: .92rem; letter-spacing: .12em; }
+  .rev blockquote { color: var(--read); font-family: var(--serif); font-size: 1rem;
+                    line-height: 1.5; margin-top: .9rem; }
+  .rev .who { color: var(--muted); font-size: .82rem; margin-top: 1.1rem; }
+
   .anat { margin-top: 3.6rem; border: 1px solid var(--divider); border-radius: 20px; overflow: hidden; }
   .anat .row { display: grid; grid-template-columns: 13rem 1fr; gap: 1.5rem; padding: 1.7rem 1.9rem; border-bottom: 1px solid var(--divider); }
   .anat .row:last-child { border-bottom: 0; }
@@ -118,6 +149,8 @@
     .lead { margin-left: auto; margin-right: auto; }
     .cta { justify-content: center; }
     .grid3 { grid-template-columns: 1fr; }
+    .revs { grid-template-columns: 1fr; }
+    .promise { justify-content: center; }
     .split { grid-template-columns: 1fr; }
     .split .txt { order: 2; }
     section { padding-top: 4.6rem; padding-bottom: 4.6rem; }
@@ -150,10 +183,21 @@
       <a class="btn" href="https://play.google.com/store/apps/details?id=com.onebreeze.app">Scarica su Google Play</a>
       <a class="btn ghost" href="#come">Come funziona</a>
     </div>
-    <p class="free"><b>Gratis.</b> Senza account, senza pubblicità, una notifica al giorno.</p>
+    <p class="promise">Una sola notifica al giorno, verso le sei. <span>Poi l'app tace.</span></p>
+    <p class="free"><b>Gratis.</b> Senza account, senza pubblicità.</p>
   </div>
   <div class="shot"><img src="img/it-1.png" alt="La schermata Oggi di One Breeze"></div>
 </main>
+
+<section class="wrap rise">
+  <div class="why">
+    <p class="big">In Italia il 36% delle persone evita le notizie, a volte o spesso.</p>
+    <p>Non perché abbia smesso di interessarsene. Perché sono troppe, arrivano tutto il
+      giorno e non finiscono mai. One Breeze nasce da lì: tre riassunti, due minuti, una
+      notifica. Poi hai finito davvero.</p>
+    <cite>Fonte: Reuters Institute, Digital News Report 2026 — scheda Italia.</cite>
+  </div>
+</section>
 
 <section class="wrap rise" id="come">
   <h2>Tre mondi, due minuti.</h2>
@@ -207,6 +251,10 @@
     </div>
     <img src="img/it-2.png" alt="Un digest di One Breeze">
   </div>
+  <div class="cta midcta">
+    <a class="btn" href="https://apps.apple.com/it/app/id6789908621">Scarica su App Store</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.onebreeze.app">Scarica su Google Play</a>
+  </div>
 </section>
 
 <section class="wrap rise">
@@ -219,6 +267,33 @@
         Aria: gliele chiedi e te le spiega in due righe.</p>
       <p class="sub" style="margin-top:1rem">Circa mille termini di borsa, criptovalute e
         tecnologia, spiegati come li spiegheresti a un amico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RIPROVA SOCIALE — struttura pronta, sezione NASCOSTA.
+     Per attivarla: togli l'attributo hidden dal tag <section> qui sotto e
+     sostituisci i tre blocchi con recensioni VERE copiate dall'App Store.
+     NON inserire testi inventati: e' l'unica parte della pagina che parla
+     a nome di altre persone. -->
+<section class="wrap rise" hidden>
+  <h2>Cosa dicono i lettori.</h2>
+  <p class="sub">Recensioni verificate sull'App Store.</p>
+  <div class="revs">
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— testo della recensione —</blockquote>
+      <p class="who">— autore —</p>
+    </div>
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— testo della recensione —</blockquote>
+      <p class="who">— autore —</p>
+    </div>
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— testo della recensione —</blockquote>
+      <p class="who">— autore —</p>
     </div>
   </div>
 </section>
@@ -260,10 +335,22 @@
       <a class="btn" href="https://play.google.com/store/apps/details?id=com.onebreeze.app">Get it on Google Play</a>
       <a class="btn ghost" href="#how">How it works</a>
     </div>
-    <p class="free"><b>Free.</b> No account, no ads, one notification a day.</p>
+    <p class="promise">One notification a day, around six. <span>Then the app goes quiet.</span></p>
+    <p class="free"><b>Free.</b> No account, no ads.</p>
   </div>
   <div class="shot"><img src="img/en-1.png" alt="One Breeze Today screen"></div>
 </main>
+
+<section class="wrap rise">
+  <div class="why">
+    <p class="big">In Italy, where One Breeze was built, 36% of people avoid the news —
+      sometimes or often.</p>
+    <p>Not because they stopped caring. Because there is too much of it, it arrives all
+      day, and it never ends. That is what One Breeze is for: three briefs, two minutes,
+      one notification. Then you are actually done.</p>
+    <cite>Source: Reuters Institute, Digital News Report 2026 — Italy page.</cite>
+  </div>
+</section>
 
 <section class="wrap rise" id="how">
   <h2>Three worlds, two minutes.</h2>
@@ -317,6 +404,10 @@
     </div>
     <img src="img/en-2.png" alt="A One Breeze brief">
   </div>
+  <div class="cta midcta">
+    <a class="btn" href="https://apps.apple.com/app/id6789908621">Download on the App Store</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.onebreeze.app">Get it on Google Play</a>
+  </div>
 </section>
 
 <section class="wrap rise">
@@ -329,6 +420,33 @@
         there's Aria: ask, and you get two lines back.</p>
       <p class="sub" style="margin-top:1rem">Around a thousand terms from markets, crypto and
         tech, explained the way you'd explain them to a friend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RIPROVA SOCIALE — struttura pronta, sezione NASCOSTA.
+     Per attivarla: togli l'attributo hidden dal tag <section> qui sotto e
+     sostituisci i tre blocchi con recensioni VERE copiate dall'App Store.
+     NON inserire testi inventati: e' l'unica parte della pagina che parla
+     a nome di altre persone. -->
+<section class="wrap rise" hidden>
+  <h2>What readers say.</h2>
+  <p class="sub">Verified App Store reviews.</p>
+  <div class="revs">
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— review text —</blockquote>
+      <p class="who">— reviewer —</p>
+    </div>
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— review text —</blockquote>
+      <p class="who">— reviewer —</p>
+    </div>
+    <div class="rev">
+      <p class="stars">★★★★★</p>
+      <blockquote>— review text —</blockquote>
+      <p class="who">— reviewer —</p>
     </div>
   </div>
 </section>
